@@ -54,7 +54,7 @@ final class VideoListViewModel {
             let response = try await service.fetchPopularVideos(page: currentPage, perPage: perPage)
             videos.append(contentsOf: response.videos)
             currentPage += 1
-            hasMore = response.next_page != nil
+            hasMore = response.nextPage != nil
             state = .loaded
         } catch {
             state = .error((error as? PexelsError)?.errorDescription ?? error.localizedDescription)

@@ -16,11 +16,15 @@ struct VideoUser: Codable, Sendable, Hashable {
 struct VideoFile: Codable, Sendable, Hashable {
     let id: Int
     let quality: String
-    let file_type: String
+    let fileType: String
     let width: Int?
     let height: Int?
     let fps: Double?
     let link: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, quality, fileType = "file_type", width, height, fps, link
+    }
 }
 
 struct Video: Codable, Sendable, Identifiable, Hashable {
@@ -31,5 +35,9 @@ struct Video: Codable, Sendable, Identifiable, Hashable {
     let image: String
     let duration: Int
     let user: VideoUser
-    let video_files: [VideoFile]
+    let videoFiles: [VideoFile]
+    
+    enum CodingKeys: String, CodingKey {
+        case id, width, height, url, image, duration, user, videoFiles = "video_files"
+    }
 }

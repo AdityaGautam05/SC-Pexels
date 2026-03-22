@@ -96,10 +96,10 @@ final class PlayerViewModel {
     private static func bestVideoURL(_ video: Video) -> String {
         let preferred = ["hd", "sd", "uhd", "mobile"]
         for quality in preferred {
-            if let file = video.video_files.first(where: { $0.quality == quality && $0.file_type == "video/mp4" }) {
+            if let file = video.videoFiles.first(where: { $0.quality == quality && $0.fileType == "video/mp4" }) {
                 return file.link
             }
         }
-        return video.video_files.first?.link ?? ""
+        return video.videoFiles.first?.link ?? ""
     }
 }

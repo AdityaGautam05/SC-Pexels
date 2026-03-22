@@ -8,10 +8,19 @@
 import Foundation
 
 nonisolated struct PexelsVideoResponse: Codable, Sendable {
-    let total_results: Int
+    let totalResults: Int
     let page: Int
-    let per_page: Int
+    let perPage: Int
     let videos: [Video]
-    let next_page: String?
+    let nextPage: String?
     let url: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case totalResults = "total_results"
+        case page
+        case perPage = "per_page"
+        case videos
+        case nextPage = "next_page"
+        case url
+    }
 }
